@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Feliz Aniversário, Meu Amor!</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #b30000;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    margin-top: 80px;
+    font-size: 3em;
+  }
+
+  p {
+    font-size: 1.3em;
+    margin-bottom: 40px;
+  }
+
+  /* Carrossel */
+  .carousel {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+  }
+
+  .carousel img {
+    width: 100%;
+    height: auto;
+    display: none;
+    border-radius: 20px;
+  }
+
+  .carousel img.active {
+    display: block;
+  }
+
+  /* Confetes */
+  .confetti {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    background-color: yellow;
+    opacity: 0.8;
+    animation: fall 4s infinite;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+  <h1>🎂 Feliz dia, feliz 27 anos, meu amor! 👴🎂</h1>
+  <p>Mesmo longe, quero que sinta o abraço apertado que a distância não me deixa dar.  
+  <br>Feliz aniversário, meu bem. ❤️</p>
+
+  <div class="carousel">
+    <img src="foto1.jpg" class="active">
+    <img src="foto2.jpg">
+    <img src="foto3.jpg">
+  </div>
+
+  <script>
+    // Carrossel automático
+    let index = 0;
+    const imgs = document.querySelectorAll('.carousel img');
+
+    function showNextImage() {
+      imgs[index].classList.remove('active');
+      index = (index + 1) % imgs.length;
+      imgs[index].classList.add('active');
+    }
+
+    setInterval(showNextImage, 2000);
+
+    // Confetes coloridos
+    const colors = ['#FFD700', '#FF4500', '#00FFFF', '#FF69B4', '#ADFF2F', '#FFFFFF'];
+    function createConfetti() {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.body.appendChild(confetti);
+
+      setTimeout(() => confetti.remove(), 5000);
+    }
+    setInterval(createConfetti, 200);
+  </script>
+
+</body>
+</html>
